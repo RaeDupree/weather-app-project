@@ -54,8 +54,20 @@ button:hover {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+#currentDate {
+  font-size: 24px;
+}
 .temp {
   font-weight: bold;
+  font-size: 48px;
+}
+.units {
+  position: relative;
+  font-size: 16px;
+  top: -20px;
+}
+#conditions {
+  font-size: 40px;
 }
 .row {
   background-color: #ffaaa5;
