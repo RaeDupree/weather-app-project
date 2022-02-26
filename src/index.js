@@ -4,10 +4,16 @@ function showCurrentWeather(response) {
   let conditions = response.data.weather[0].main;
   let currentTemp = document.querySelector(".temp");
   let currentCond = document.querySelector("#conditions");
+  let iconElement = document.querySelector("#icon");
   currentTemp.innerHTML = ` ${temperature}°C `;
   currentCond.innerHTML = `${conditions}`;
   let h1 = document.querySelector("h1");
   h1.innerHTML = response.data.name;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function searchCity(event) {

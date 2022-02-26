@@ -21,15 +21,16 @@ h1 {
 .location {
   border: none;
   background-color: #fcf8f3;
-  border-radius: 10px;
+  border-radius: 12px;
   border-color: none;
-  padding-top: 5px;
-  padding-bottom: 6.5px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   margin: none;
 }
-.btn {
+#btn {
   background-color: #fcf8f3;
   border-radius: 12px;
+  font-size: 12px;
   border: none;
 }
 .btn:hover {
@@ -40,6 +41,7 @@ h1 {
 button {
   background-color: #fcf8f3;
   border-radius: 12px;
+  font-size: 12px;
   border: none;
   margin-top: 5px;
 }
@@ -67,8 +69,9 @@ button:hover {
   top: -20px;
 }
 #conditions {
-  font-size: 40px;
+  font-size: 32px;
 }
+
 .row {
   background-color: #ffaaa5;
   padding-top: 50px;
