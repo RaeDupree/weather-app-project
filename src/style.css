@@ -59,7 +59,7 @@ button:hover {
 #currentDate {
   font-size: 24px;
 }
-.temp {
+#temp {
   font-weight: bold;
   font-size: 48px;
 }
