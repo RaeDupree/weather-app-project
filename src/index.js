@@ -3,10 +3,14 @@ function showCurrentWeather(response) {
   let temperature = Math.round(response.data.main.temp);
   let conditions = response.data.weather[0].main;
   let currentTemp = document.querySelector("#temp");
-  let windElement = document.querySelector("wind");
+  let windElement = document.querySelector("#wind");
   let currentCond = document.querySelector("#conditions");
   let iconElement = document.querySelector("#icon");
-  currentTemp.innerHTML = ` ${temperature}°C `;
+  let maxElement = document.querySelector("#max");
+  let minElement = document.querySelector("#min");
+  maxElement.innerHTML = Math.round(response.data.main.temp_max);
+  minElement.innerHTML = Math.round(response.data.main.temp_min);
+  currentTemp.innerHTML = ` ${temperature} `;
   currentCond.innerHTML = `${conditions}`;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   let h1 = document.querySelector("h1");
@@ -53,12 +57,11 @@ currentButton.addEventListener("click", getCurrentLocation);
 //unit conversion//
 function showFahrenheitTemp(event) {
   event.preventDefault();
-  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  let fahrenheitTemp = (temperature * 9) / 5 + 32;
   alert("fahrenheitTemp");
   let temperatureElement = document.querySelector("#temp");
   temperatureElement.innerHTML = Math.round(fahrenheitTemp);
 }
-let celsiusTemp = null;
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemp);
 
