@@ -64,6 +64,12 @@ button:hover {
   font-weight: bold;
   font-size: 48px;
 }
+.minMax {
+  font-size: 28px;
+}
+.windSpeed {
+  font-size: 28px;
+}
 .units {
   position: relative;
   font-size: 16px;
@@ -75,7 +81,7 @@ button:hover {
 }
 
 #conditions {
-  font-size: 32px;
+  font-size: 28px;
 }
 
 .row {
@@ -92,10 +98,13 @@ button:hover {
   font-size: 20px;
 }
 .forecast {
-  font-size: 18px;
+  font-size: 14px;
   display: block;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+.forecast-temp {
+  font-size: 16px;
 }
 .link {
   font-size: 10px;
