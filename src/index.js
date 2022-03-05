@@ -9,6 +9,12 @@ function getForecast(coordinates) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
+function formatDay(timestamp){
+  let date = new Date(timestamp * 1000); 
+  let day = date.getDay(); 
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]; 
+  return days[day]; 
+}
 
  let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
@@ -17,7 +23,7 @@ function getForecast(coordinates) {
         forecastHTML +
           `<div class="row">
                 <div class="col">
-                  <div class="forecast-date"> ${forecastDay.dt}</div>
+                  <div class="forecast-date"> ${formatDay(forecastDay.dt)}</div>
                   <div class="forecast-temp">
                     H:
                     <span class="forcast-tempmax"> ${forecastDay.temp.max}°</span>| L:
