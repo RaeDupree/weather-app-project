@@ -22,11 +22,12 @@ h1 {
 .location {
   border: none;
   background-color: #fcf8f3;
-  border-radius: 2px;
   border-color: none;
   padding-top: 4px;
   padding-bottom: 4px;
-  margin: none;
+  text-align: center;
+  margin-right: 6px;
+  border-radius: 2px;
 }
 #btn {
   background-color: #fcf8f3;
@@ -62,13 +63,13 @@ button:hover {
 }
 #temp {
   font-weight: bold;
-  font-size: 48px;
+  font-size: 42px;
 }
 .minMax {
-  font-size: 28px;
+  font-size: 24px;
 }
 .windSpeed {
-  font-size: 28px;
+  font-size: 20px;
 }
 .units {
   position: relative;
@@ -97,15 +98,13 @@ button:hover {
   text-align: center;
   font-size: 20px;
 }
-.forecast {
-  font-size: 14px;
-  display: block;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
 .forecast-temp {
-  font-size: 16px;
+  font-size: 12px;
 }
+.forecast-date {
+  font-style: bold;
+}
+
 .link {
   font-size: 10px;
   text-decoration: none;
