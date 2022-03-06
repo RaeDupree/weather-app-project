@@ -1,39 +1,50 @@
 //forecast//
-function displayForecast(response) {
-  console.log(response.data.daily);
-  let forecastElement = document.querySelector(".forecast");
-}
 
 function getForecast(coordinates) {
   let apiKey = "b430aa6ae36d08fafac8e3f756c531a2";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
-function formatDay(timestamp){
-  let date = new Date(timestamp * 1000); 
-  let day = date.getDay(); 
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]; 
-  return days[day]; 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  return days[day];
 }
 
- let forecastHTML = `<div class="row">`;
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector(".forecast");
+
+  let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
-          `<div class="row">
-                <div class="col">
-                  <div class="forecast-date"> ${formatDay(forecastDay.dt)}</div>
-                  <div class="forecast-temp">
-                    H:
-                    <span class="forcast-tempmax"> ${forecastDay.temp.max}°</span>| L:
-                    <span class="forecast-temp-min"> ${forecastDay.temp.min}°</span>
-                  </div>
-                  <img src="http://openweathermap.org/img/wn/${
+        `<div class="col">
+          <div class="forecast-date"> ${formatDay(forecastDay.dt)}</div>
+          <div class="forecast-temp">
+            H:
+            <span class="forcast-tempmax"> ${Math.round(
+              forecastDay.temp.max
+            )}°</span>| L:
+            <span class="forecast-temp-min"> ${Math.round(
+              forecastDay.temp.min
+            )}°</span>
+          </div>
+          <img src="http://openweathermap.org/img/wn/${
             forecastDay.weather[0].icon
           }@2x.png"
           alt=""
-          width="42"/> </div> </div>`;}}
+          width="42"/> 
+        </div>`;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 
 //current weather/ /
 function showCurrentWeather(response) {
@@ -93,33 +104,21 @@ let currentButton = document.querySelector("#current-location");
 currentButton.addEventListener("click", getCurrentLocation);
 
 //unit conversion//
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temp");
-
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheiTemperature = (temperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheiTemperature);
-}
 
 function displayCelsiusTemperature(event) {
   event.preventDefault();
+  let temperature = Math.round(response.data.main.temp);
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temp");
   temperatureElement.innerHTML = Math.round(temperature);
 }
 
-let temperature = null;
-
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
-
-//my example//
 
 //current date//
 let now = new Date();
@@ -153,4 +152,4 @@ let months = [
 ];
 let month = months[now.getMonth()];
 
-currentDate.innerHTML = `${month}, ${day} ${year} ${hours}:${minutes}`;       
+currentDate.innerHTML = `${month}, ${day} ${year} ${hours}:${minutes}`;
