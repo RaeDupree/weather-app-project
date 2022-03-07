@@ -95,34 +95,16 @@ function showPosition(position) {
   console.log(apiUrl);
   axios.get(apiUrl).then(showCurrentWeather);
 }
-navigator.geolocation.getCurrentPosition(showPosition);
-
-function getCurrentLocation() {
+function getCurrentLocation(event) {
+  event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 let currentButton = document.querySelector("#current-location");
 currentButton.addEventListener("click", getCurrentLocation);
 
-//unit conversion//
-
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  let temperature = Math.round(response.data.main.temp);
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temp");
-  temperatureElement.innerHTML = Math.round(temperature);
-}
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
-
 //current date//
 let now = new Date();
-let currentDate = document.querySelector("#currentDate");
+let currentDate = document.querySelector("h3");
 let hours = now.getHours();
 if (hours < 10) {
   hours = `0${hours}`;
